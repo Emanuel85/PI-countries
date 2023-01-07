@@ -1,0 +1,127 @@
+.button-home {
+  width: 140px;
+  height: 50px;
+
+  position: absolute;
+  bottom: 200px;
+
+  display: flex;
+  justify-content: center;
+
+  border-radius: 5px;
+  border-style: none;
+  z-index: 3000;
+
+  /* background: rgb(0, 70, 127); */
+  user-select: none;
+  background: linear-gradient(0deg, rgba(0, 70, 127, 1) 0%, rgba(165, 204, 130, 1) 100%);
+
+  opacity: 0.3;
+  transition: 0.5s all ease;
+}
+
+.buttom-landinPage {
+  left: 20px;
+  bottom: 14px;
+
+  width: 140px;
+  height: 50px;
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+
+  border-radius: 5px;
+  border-style: none;
+
+  z-index: 3000;
+  user-select: none;
+  background: linear-gradient(0deg, rgba(0, 70, 127, 1) 0%, rgba(165, 204, 130, 1) 100%);
+
+  opacity: 0.3;
+  transition: 0.5s all ease;
+}
+
+.button-addActivitie {
+  width: 140px;
+  height: 50px;
+
+  position: absolute;
+  bottom: 500px;
+  left: 10px;
+
+  display: flex;
+  justify-content: center;
+
+  border-radius: 5px;
+  border-style: none;
+  z-index: 3000;
+
+  /* background: rgb(0, 70, 127); */
+  user-select: none;
+  background: linear-gradient(0deg, rgba(0, 70, 127, 1) 0%, rgba(165, 204, 130, 1) 100%);
+
+  opacity: 0.3;
+  transition: 0.5s all ease;
+}
+
+.buttom-addActivity {
+  width: 140px;
+  height: 50px;
+  position: relative;
+  top: 200px;
+
+  display: flex;
+  justify-content: center;
+
+  border-radius: 5px;
+  border-style: none;
+  z-index: 3000;
+
+  user-select: none;
+  background: linear-gradient(0deg, rgba(0, 70, 127, 1) 0%, rgba(165, 204, 130, 1) 100%);
+
+  opacity: 0.3;
+  transition: 0.5s all ease;
+}
+
+
+.button-addActivitie>span {
+  position: absolute;
+  margin: 16px auto;
+  font-size: 14px;
+  font-weight: 400;
+  color: white;
+  transition: 0.5s all ease;
+}
+
+
+.button-home:hover,
+.buttom-landinPage:hover,
+.button-addActivitie:hover,
+.buttom-addActivity:hover {
+  opacity: 1;
+  transition: 0.5s all ease;
+}
+
+
+span {
+  position: absolute;
+  margin: 14px 30px;
+  font-size: 16px;
+  font-weight: 400;
+  color: white;
+  transition: 0.5s all ease;
+}
+
+
+
+
+@media screen and (max-width:800px) {
+
+  .button-home{
+    bottom: 100px;
+  }
+
+
+}

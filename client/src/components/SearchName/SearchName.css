@@ -1,0 +1,39 @@
+.resultCountries-container {
+  height: 90%;
+  margin-left: 220px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  gap: 20px 30px;
+}
+
+.resultHome-container {
+  height: 100vh;
+  width: 100vw;
+
+  position: relative;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('../../assets/backgroundHome2.jpg');
+}
+
+.titleResultSearch {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 40px;
+  font-weight: 400;
+}
+
+.paginationResultSearch {
+  width: 100%;
+  height: 0%;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  /* margin: 0 auto; */
+  margin-bottom: 50px;
+}

@@ -1,0 +1,99 @@
+.country-container {
+  width: 300px;
+  height: 380px;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  bottom: 0;
+    
+  background-size: cover;
+  background-position: -200px;
+  opacity: 0.5;    
+  
+  border-radius: 5px;  
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  transition: 0.5s all ease;
+}
+
+.country-flag {
+  border: 1px solid #0000001c;
+  width: auto;
+  height: 70px;
+  display: flex;
+  align-self: flex-end;
+  position: relative;
+  left: -5px;
+  bottom: -5px; 
+}
+
+.country-detail {
+  background-color: rgb(255 255 255 / 20%);  
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  height: 140px;
+  width: 100%;
+  top: 240px;
+  border-radius: 0 0 5px 5px;
+  backdrop-filter: blur(2px);
+}
+
+.country-continent {
+  margin-top: 10px;
+  margin-left: 10px;
+
+  color: white;
+  font-size: 14px;
+}
+
+
+/*REVISAR EL OVERFLOW PARA EVITAR UN DESBORDAMIENTO DEL NOMBRE DEL PAIS*/
+.country-name {
+  width: 280px;
+  color: white;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-top: 15px;
+  text-transform: uppercase;
+  font-size: 25px;
+  opacity: .75;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.country-capital {
+  color: white;
+  font-weight: 300;
+  font-size: 14px;
+  margin-left: 10px;
+  margin-top: 0;
+}
+
+.country-id {
+  color: #f1f172;
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  right: 15px;
+  bottom: 5px;
+  font-weight: 800;
+  font-size: 40px;
+}
+
+.small-font{
+  font-size: 15px;
+}
+
+.country-container:hover{
+  bottom: 10px;
+  opacity: 1;
+  border: 1px solid rgba(255, 255, 255, 0.556);
+  box-shadow: 0 5px 3px 0 rgb(0 0 0 / 30%);
+  transition: 0.5s all ease;
+}
+
+
+/* 
+ */

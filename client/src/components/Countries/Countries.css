@@ -1,0 +1,9 @@
+
+.countries-container{    
+    margin-top: 20px;
+    margin-left: 220px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px 30px;
+}

@@ -1,0 +1,23 @@
+.home-container {
+    height: 100vh;
+    width: 100vw;
+    
+    position: relative;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('../../assets/backgroundHome2.jpg');
+}
+
+.title-container{
+    font-size: 40px;
+    display: inline-block;
+    position: relative;
+    top: 10px;
+
+    margin-left: 10px;
+
+    color: rgb(255, 255, 255);
+
+    font-weight: 400;
+}

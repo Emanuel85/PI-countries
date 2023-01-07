@@ -1,0 +1,58 @@
+
+.pagination-container{
+    display: flex;
+    justify-content: center;
+    
+    margin-top: 25px;
+}
+
+
+.page {
+    width: 40px;
+    height: 40px;
+    
+    margin: 0 5px;
+    
+    font-size: 14px;
+    
+    border: none;
+    border-radius: 5px;
+    
+    background-color: #ffffff40;
+    color: #ffffff;
+
+    user-select: none;
+}
+
+.page-current{
+    width: 40px;
+    height: 40px;
+    
+    margin: 0 5px;
+    
+    font-size: 18px;
+    
+    border: none;
+    
+    background-color: #96C082;
+    
+    border-radius: 5px;
+    color: #ffffff;
+
+    user-select: none;
+}
+
+.page-noCurrent {
+    display: none;
+}
+
+.page:hover{
+    font-size: 18px;
+    margin: 0 5px;
+    border: none;
+    width: 40px;
+    height: 40px;
+    background-color: #96C082;
+    border-radius: 5px;
+    color: #ffffff;
+}

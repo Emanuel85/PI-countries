@@ -1,0 +1,27 @@
+.loading-container{
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-loader {
+    position: relative;
+    top: 30px;
+    width:50px;
+    height:8px;
+    background: radial-gradient(circle closest-side,#ffffff 90%,#0000) 0 0/33% 100% space;
+    clip-path: inset(0 100% 0 0);
+    animation:d1 1s steps(4) infinite;
+  }
+  @keyframes d1 {to{clip-path: inset(0 -34% 0 0)}}
+
+  .loading-container > p{
+    font-weight: 500;
+    top:20px;
+    font-size: 35px;
+    position: relative;
+    color: white;
+  }
+    

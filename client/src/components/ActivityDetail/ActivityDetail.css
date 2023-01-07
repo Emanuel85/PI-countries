@@ -1,0 +1,129 @@
+.activityImage {
+    background-size: cover;
+    background-position: center;
+    width: 250px;
+    height: 360px;
+    background-color: #348ede;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 20px 40px;
+    margin-bottom: 50px;
+    z-index: -1;
+}
+
+.divInfoActivity {
+    font-size: 25px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 600;
+    width: 100%;
+    height: 60px;
+    background-color: #252525;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 187px;
+    border-radius: 0 0 5px 5px;
+}
+
+.circleName {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    position: relative;
+    top: 20px;
+    right: 20px;    
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #252525b3;
+}
+
+
+.level1{
+    background-image: url('../../assets/Level1.png');
+}
+
+.level2{
+    background-image: url('../../assets/Level2.png');
+}
+
+.level3{
+    background-image: url('../../assets/Level3.png');
+}
+
+.level4{
+    background-image: url('../../assets/Level4.png');
+}
+
+.level5{
+    background-image: url('../../assets/Level5.png');
+}
+
+
+.circleDuration {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    position: relative;
+    top: 30px;
+    right: 20px;
+    background-image: url('../../assets/rotateRight.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #252525b3;
+}
+
+.duration {
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    position: relative;
+    bottom: 0px;
+    right: 10px;
+    user-select: none;
+}
+
+.small{
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+    position: relative;
+    bottom: 1px;
+    right: 7px;
+}
+
+.circleSeason {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    position: relative;
+    top: 17px;
+    right: 20px;
+    background-image: url('../../assets/Autumn.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: #252525b3;
+}
+
+#Summer{
+    background-image: url('../../assets/Summer.png');
+}
+
+#Spring{
+    background-image: url('../../assets/Spring.png');
+}
+
+#Autumn{
+    background-image: url('../../assets/Autumn.png');
+}
+
+#Winter{
+    background-image: url('../../assets/Winter.png');
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
