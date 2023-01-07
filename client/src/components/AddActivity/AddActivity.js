@@ -260,19 +260,18 @@ const AddActivity = () => {
 
             <div className="image-container">
               <div className="input-image">
-              <label className={previewImage.length > 0 ? 'noCustom-file-upload' : 'custom-file-upload'}                
+                <label className={previewImage.length > 0 ? 'noCustom-file-upload' : 'custom-file-upload'}
                 >
                   <input
                     type="file"
                     accept="image/*"
                     id="customFile"
                     hidden={previewImage.length > 0}
-                    onChange={(e) => handleImage(e.target.files[0])} /> <FaFileImage/>
+                    onChange={(e) => handleImage(e.target.files[0])} /> <FaFileImage />
                 </label>
-                
+
               </div>
-              <img className={previewImage.length > 0 ? 'previewImage': 'NopreviewImage'} src={previewImage} />
-              
+              <img className={previewImage.length > 0 ? 'previewImage' : 'NopreviewImage'} src={previewImage} />
             </div>
 
           </form>

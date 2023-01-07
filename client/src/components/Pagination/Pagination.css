@@ -1,8 +1,7 @@
-
-.pagination-container{
+.pagination-container {
     display: flex;
     justify-content: center;
-    
+
     margin-top: 25px;
 }
 
@@ -10,32 +9,32 @@
 .page {
     width: 40px;
     height: 40px;
-    
+
     margin: 0 5px;
-    
+
     font-size: 14px;
-    
+
     border: none;
     border-radius: 5px;
-    
+
     background-color: #ffffff40;
     color: #ffffff;
 
     user-select: none;
 }
 
-.page-current{
+.page-current {
     width: 40px;
     height: 40px;
-    
+
     margin: 0 5px;
-    
+
     font-size: 18px;
-    
+
     border: none;
-    
+
     background-color: #96C082;
-    
+
     border-radius: 5px;
     color: #ffffff;
 
@@ -46,7 +45,7 @@
     display: none;
 }
 
-.page:hover{
+.page:hover {
     font-size: 18px;
     margin: 0 5px;
     border: none;
@@ -55,4 +54,18 @@
     background-color: #96C082;
     border-radius: 5px;
     color: #ffffff;
+}
+
+
+@media screen and (max-width:800px) {
+    .pagination-container {
+        display: flex;
+        width: 100%;
+        position: fixed;
+        bottom: 0px;
+        align-items: center;
+        justify-content: center;
+        background-color: #252525d6;
+        height: 64px;
+    }
 }

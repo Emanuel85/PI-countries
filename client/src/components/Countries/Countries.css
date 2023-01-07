@@ -1,9 +1,23 @@
-
-.countries-container{    
+.countries-container {
     margin-top: 20px;
     margin-left: 220px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 20px 30px;
+}
+
+
+@media screen and (max-width:800px) {
+
+    .countries-container {
+        margin-top: 40px;
+        margin-left: 0;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        flex-wrap: wrap;
+        gap: 20px 0px;
+    }
+
 }
