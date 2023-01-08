@@ -50,7 +50,7 @@ const CountryDetail = () => {
         )}
       </div>
       < Buttom
-        nameClass='buttom-landinPage'
+        nameClass='buttom-countryDetails'
         description='BACK'
         linkTo='/home'
       />

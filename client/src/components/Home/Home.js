@@ -19,6 +19,7 @@ export const Home = () => {
   }, [])
   return (
     <div className='home-container'>
+      
       <NavLink to={'/'}>
         <h1 className='title-container'>TRAVEL SOUL</h1>
       </NavLink>

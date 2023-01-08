@@ -35,30 +35,30 @@
     border-radius: 50px;
     position: relative;
     top: 20px;
-    right: 20px;    
+    right: 20px;
     background-repeat: no-repeat;
     background-size: contain;
     background-color: #252525b3;
 }
 
 
-.level1{
+.level1 {
     background-image: url('../../assets/Level1.png');
 }
 
-.level2{
+.level2 {
     background-image: url('../../assets/Level2.png');
 }
 
-.level3{
+.level3 {
     background-image: url('../../assets/Level3.png');
 }
 
-.level4{
+.level4 {
     background-image: url('../../assets/Level4.png');
 }
 
-.level5{
+.level5 {
     background-image: url('../../assets/Level5.png');
 }
 
@@ -86,7 +86,7 @@
     user-select: none;
 }
 
-.small{
+.small {
     font-size: 20px;
     color: white;
     font-weight: 600;
@@ -108,22 +108,106 @@
     background-color: #252525b3;
 }
 
-#Summer{
+#Summer {
     background-image: url('../../assets/Summer.png');
 }
 
-#Spring{
+#Spring {
     background-image: url('../../assets/Spring.png');
 }
 
-#Autumn{
+#Autumn {
     background-image: url('../../assets/Autumn.png');
 }
 
-#Winter{
+#Winter {
     background-image: url('../../assets/Winter.png');
 }
 
 ::-webkit-scrollbar {
-    display: none;
+        display: none;
+    }
+
+
+@media screen and (max-width:800px) {
+
+    .activityImage {
+        background-size: cover;
+        background-position: center;
+        width: 182px;
+        height: 275px;
+        border-radius: 5px 5px 0 0;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin: 13px 34px;
+        z-index: -1;
+    }
+
+    .circleName {
+        width: 30px;
+        height: 30px;
+        border-radius: 50px;
+        position: relative;
+        top: 20px;
+        right: 14px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color: #252525b3;
+    }
+
+    .circleDuration {
+        width: 30px;
+        height: 30px;
+        border-radius: 50px;
+        position: relative;
+        top: 30px;
+        right: 14px;
+        background-image: url('../../assets/rotateRight.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color: #252525b3;
+    }
+
+    .small {
+        font-size: 20px;
+        color: white;
+        font-weight: 600;
+        position: relative;
+        bottom: -3px;
+        right: 6px;
+    }
+
+    .circleSeason {
+        width: 30px;
+        height: 30px;
+        border-radius: 50px;
+        position: relative;
+        top: 17px;
+        right: 12px;
+        background-image: url('../../assets/Autumn.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color: #252525b3;
+    }
+
+    .divInfoActivity {
+        font-size: 18px;
+        text-transform: uppercase;
+        color: white;
+        font-weight: 600;
+        width: 100%;
+        height: 30px;
+        background-color: #252525;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        top: 136px;
+        border-radius: 0 0 5px 5px;
+    }
+
+    
+
+
 }

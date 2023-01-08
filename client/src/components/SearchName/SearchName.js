@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import * as actions from '../../redux/actions/index'
 import Buttom from '../Buttom/Buttom'
 import Country from '../Country/Country'
@@ -24,8 +24,12 @@ const SearchName = () => {
 
   return (
     <div className='resultHome-container'>
+      <NavLink className='titleResultHome-container' to={'/home'}>
+        <h1 className='title-container'>TRAVEL SOUL</h1>
+      </NavLink>
       <h2 className='titleResultSearch'>
-        <p>{resultCountries.length}</p> resultados para la busqueda de:
+        <p>{resultCountries.length}</p>
+        resultados para la busqueda de:
         <p>{name}</p>
       </h2>
       <div className='resultCountries-container'>
@@ -45,10 +49,11 @@ const SearchName = () => {
           description='BACK'
           linkTo='/home'
         />
-        <div className='paginationResultSearch'>
-          <Pagination 
+
+      </div>
+      <div className='paginationResultSearch'>
+        <Pagination
           paginationSearch={newTotalPage} />
-        </div>
       </div>
 
     </div>

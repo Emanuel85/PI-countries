@@ -1,8 +1,24 @@
 .searchAndFilterBar-Container {
   position: fixed;
   bottom: 65%;
+  width: 250px;
+  height: 220px;
+  background-color: rgba(74, 74, 74, 0.6);
+  border-radius: 0 8px 8px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  transition: 0.8s ease all;
+}
+
+
+.searchAndFilterBar-Container-NoVisible {
+  position: fixed;
+  bottom: 65%;
   width: 40px;
-  height: 240px;
+  height: 220px;
   background-color: rgba(74, 74, 74, 0.6);
   border-radius: 0 8px 8px 0;
   display: flex;
@@ -14,22 +30,57 @@
 }
 
 
+.title-search {
+  width: 218px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  color: white;
+  -webkit-transform: rotate(270deg);
+  letter-spacing: 10px;
+}
+
+.No-title-search {
+  width: 218px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 119px;
+  color: white;
+  -webkit-transform: rotate(270deg);
+  letter-spacing: 10px;
+}
+
+.title-search:hover,
+.No-title-search:hover {
+  width: 218px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: white;
+  position: absolute;
+  color: rgba(74, 74, 74, 0.6);
+  -webkit-transform: rotate(270deg);
+  letter-spacing: 10px;
+}
+
 /*------------------------CONTENEDOR DE BUSQUEDA POR NOMBRE*/
 
-.filter-Poblation-container {
-  position: relative;
-  top: -18px;
-  left: 53px;
-}
+
 
 
 .searchByName-container {
-  margin-top: 20px;
   display: flex;
   flex-direction: row;
-  margin: 0 auto;
   position: relative;
-  bottom: 35px;
+  bottom: 24px;
+  right: 24px;
 }
 
 
@@ -57,12 +108,39 @@
   color: #ffffff;
 }
 
+
+/*--------------------------------- CONTENEDOR DE FILTRADO POR ACTIVIDAD*/
+
+.filter-continent-activity {
+  position: absolute;
+  top: 40px;
+  left: 10px
+}
+
+
+/*------------------------CONTENEDOR DE FILTRADO POR CONTINENTE*/
+.filter-continent-container {
+  position: absolute;
+  top: 80px;
+  left: 10px
+}
+
+.input-continent {
+  border: none;
+  width: 184px;
+  height: 30px;
+  border-radius: 5px;
+  padding-left: 5px;
+  outline: none;
+}
+
+
 /*------------------------CONTENEDOR DE ORDENAMIENTO ALFABETICO AZ-ZA*/
 
 .filter-Alphabetic-container {
   position: relative;
-  top: 44px;
-  right: 48px;
+  top: 50px;
+  right: 72px;
 }
 
 .filter-container {
@@ -110,9 +188,13 @@
 }
 
 
-
-
 /*------------------------CONTENEDOR DE ORDENAMIENTO POBLACION 09-90*/
+
+.filter-Poblation-container {
+  position: relative;
+  top: -13px;
+  left: 30px;
+}
 
 .Poblation-container {
   position: relative;
@@ -159,80 +241,55 @@
 }
 
 
-/*------------------------CONTENEDOR DE FILTRADO POR CONTINENTE*/
-.filter-continent-container {
-  position: absolute;
-  top: 80px;
-}
-
-.input-continent {
-  border: none;
-  width: 184px;
-  height: 30px;
-  border-radius: 5px;
-  padding-left: 5px;
-  outline: none;
-}
-
-
-/*--------------------------------- CONTENEDOR DE FILTRADO POR ACTIVIDAD*/
-
-.filter-continent-activity {
-  position: absolute;
-  top: 40px;
-}
-
-
 /*------------------------------*/
 .button-reset {
   position: relative;
   top: 10px;
 }
 
-.searchAndFilterBar-Container:hover {
-  width: 210px;
-  background-color: #4a4a4a;
-  background: linear-gradient(90deg, rgb(165, 204, 130) 0%, rgba(105, 105, 105, 1) 47%, rgba(72, 72, 72, 1) 100%);
-}
-
-.disable{
+.disable {
   pointer-events: none;
 }
 
-.active{
+.active {
   pointer-events: all;
 }
 
-.searchByName-container,
-.filter-Alphabetic-container,
-.filter-Poblation-container,
-.filter-continent-container,
-.filter-continent-activity,
-.button-reset-container {
-  display: none;
+.No-visible {
+  visibility: hidden;
 }
 
+@media screen and (max-width:800px) {
 
-.searchAndFilterBar-Container:hover .searchByName-container {
-  display: flex;
-}
+  .searchAndFilterBar-Container {
+    position: fixed;
+    bottom: 30.5%;;
+    width: 250px;
+    height: 220px;
+    background-color: rgba(74, 74, 74, 0.6);
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    transition: 0.8s ease all;
+  }
 
-.searchAndFilterBar-Container:hover .filter-Alphabetic-container {
-  display: flex;
-}
 
-.searchAndFilterBar-Container:hover .filter-Poblation-container {
-  display: flex;
-}
+  .searchAndFilterBar-Container-NoVisible {
+    position: fixed;
+    bottom: 30.5%;;
+    width: 40px;
+    height: 220px;
+    background-color: rgba(74, 74, 74, 0.6);
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    transition: 0.6s ease all;
 
-.searchAndFilterBar-Container:hover .filter-continent-container {
-  display: flex;
-}
-
-.searchAndFilterBar-Container:hover .filter-continent-activity {
-  display: flex;
-}
-
-.searchAndFilterBar-Container:hover .button-reset-container {
-  display: flex;
+  }
 }

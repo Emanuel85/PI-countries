@@ -13,9 +13,14 @@ const SearchAndFilterBar = () => {
   const arrayActivities = useSelector(state => state.arrayActivities);
   const [name, setName] = useState('');
   const [activities, setActivities] = useState([]);
+  const [visible, setVisible] = useState(false)
 
 
-
+  const handleVisible = (e) => {
+    e.preventDefault()
+    setVisible(!visible)
+  }
+  console.log('soy el estado para el menu', visible)
   useEffect(() => {
     dispatch(actions.filterByActivities(activities));
   }, [dispatch, activities])
@@ -71,17 +76,37 @@ const SearchAndFilterBar = () => {
 
 
   }
-
+  //'searchAndFilterBar-Container animate__animated animate__fadeInLeft'
+  //visible ? 'searchAndFilterBar-Container animate__animated animate__fadeInLeft' : 'searchAndFilterBar-Container-NoVisible animate__animated animate__fadeInLeft'
   return (
-    <div className='searchAndFilterBar-Container animate__animated animate__fadeInLeft'>
+
+    <div className={visible ? 'searchAndFilterBar-Container animate__animated animate__fadeInLeft' : 'searchAndFilterBar-Container-NoVisible animate__animated animate__fadeInLeft'}>
+
+      <p onClick={(e) => handleVisible(e)} className={visible ? 'No-title-search' : 'title-search'}>SEARCH</p>
+
       <div className='searchByName-container'>
         <input className='inputSearch' type='text' onChange={onInputChange} value={name} placeholder='Search Country' />
-        <Link className={name.length == 0 ? 'disable': 'active'} to={`/search/${name}`}>
+        <Link className={name.length == 0 ? 'disable' : 'active'} to={`/search/${name}`}>
           <button className='buttonSearch' type='button' disabled={name.length == 0} onClick={onClick}><FaSearch /></button>
         </Link>
       </div>
 
-      <div className='filter-continent-container'>
+      <div className={visible ? 'filter-continent-activity' : 'No-visible'}>
+        <select className='input-continent' onChange={(e) => handleActivities(e)} >
+          <option value={'Filter by activity'}>Filter by activity</option>
+          {arrayActivities?.map(a => {
+            return (
+              <option
+                key={a.id}
+                value={a.name}> {a.name}
+              </option>
+            )
+          })
+          }
+        </select>
+      </div>
+
+      <div className={visible ? 'filter-continent-container' : 'No-visible'}>
         <select className='input-continent' onChange={(e) => onContinentChange(e)}>
           <option value="Filter by continent">Filter by continent</option>
           <option value="Asia">Asia</option>
@@ -93,22 +118,7 @@ const SearchAndFilterBar = () => {
         </select>
       </div>
 
-      <div className='filter-continent-activity'>
-        <select className='input-continent' onChange={(e) => handleActivities(e)} >
-          <option value={'Filter by activity'}>Filter by activity</option>
-          {arrayActivities?.map(a => {
-            return (
-              <option
-                key={a.id}
-                value={a.name}> {a.name} 
-                </option>
-            )
-          })
-          }
-        </select>
-      </div>
-
-      <div className='filter-Alphabetic-container'>
+      <div className={visible ? 'filter-Alphabetic-container' : 'No-visible'}>
         <div className='Alphabetic-container'>
           <h3 className='Alphabetic'> Alphabetic: </h3>
           <button className='buttonAZ' onClick={handleAz}><FaSortAlphaDown /></button>
@@ -116,7 +126,7 @@ const SearchAndFilterBar = () => {
         </div>
       </div>
 
-      <div className='filter-Poblation-container'>
+      <div className={visible ? 'filter-Poblation-container' : 'No-visible'}>
         <div className='Poblation-container'>
           <h3 className='Poblation'> Poblation: </h3>
           <button className='button90' onClick={handlePopulationDown}><FaSortNumericDownAlt /></button>
@@ -124,7 +134,7 @@ const SearchAndFilterBar = () => {
         </div>
       </div>
 
-      <div className='button-reset-container'>
+      <div className={visible ? 'button-reset-container' : 'No-visible'}>
         <div className='button-reset'>
           <button className='reset' onClick={reset}>RESET</button>
         </div>

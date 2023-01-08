@@ -20,7 +20,30 @@
   transition: 0.5s all ease;
 }
 
+
 .buttom-landinPage {
+  left: 20px;
+  bottom: 14px;
+
+  width: 140px;
+  height: 50px;
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+
+  border-radius: 5px;
+  border-style: none;
+
+  z-index: 3000;
+  user-select: none;
+  background: linear-gradient(0deg, rgba(0, 70, 127, 1) 0%, rgba(165, 204, 130, 1) 100%);
+
+  opacity: 0.3;
+  transition: 0.5s all ease;
+}
+
+.buttom-countryDetails{
   left: 20px;
   bottom: 14px;
 
@@ -65,6 +88,7 @@
   transition: 0.5s all ease;
 }
 
+
 .buttom-addActivity {
   width: 140px;
   height: 50px;
@@ -99,7 +123,8 @@
 .button-home:hover,
 .buttom-landinPage:hover,
 .button-addActivitie:hover,
-.buttom-addActivity:hover {
+.buttom-addActivity:hover,
+.buttom-countryDetails:hover {
   opacity: 1;
   transition: 0.5s all ease;
 }
@@ -115,8 +140,6 @@ span {
 }
 
 
-
-
 @media screen and (max-width:800px) {
 
   .button-home {
@@ -124,14 +147,14 @@ span {
   }
 
   .button-addActivitie {
-    width: 65px;
-    height: 40px;
+    width: 40px;
+    height: 120px;
     position: fixed;
-    top: 5px;
-    left: 288px;
+    top: 140px;
+    left: 0px;
     display: flex;
     justify-content: center;
-    border-radius: 5px;
+    border-radius: 0 5px 5px 0;
     border-style: none;
     z-index: 3000;
     -webkit-user-select: none;
@@ -145,13 +168,18 @@ span {
     width: 100%;
     text-align: center;
     display: flex;
+    justify-content: center;
     align-items: center;
     position: absolute;
-    margin: 0;
-    font-size: 10px;
+    margin: auto 0;
+    font-size: 12px;
     font-weight: 400;
     color: white;
+    -webkit-transform: rotate(270deg);
   }
 
+  .buttom-landinPage {
+    visibility: hidden;
+  }
 
 }
