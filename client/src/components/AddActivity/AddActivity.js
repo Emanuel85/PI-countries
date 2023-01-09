@@ -143,12 +143,11 @@ const AddActivity = () => {
           setimgFetch(false)
         }).catch(e => {
           setimgFetch(false)
-        }) // Or Error in console
+        })
     }
   }
 
 
-  //https://script.google.com/macros/s/AKfycbwtnD0gLZBLe2ebL37zNHbo4AgPmmZzPpO3BK3PnXeF4xnzeb2bKlfSsmaM-BFgz6COSA/exec
 
 
   return (

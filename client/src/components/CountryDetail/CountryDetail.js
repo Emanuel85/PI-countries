@@ -6,6 +6,9 @@ import './CountryDetail.css'
 import Buttom from '../Buttom/Buttom.js'
 import { imgBank } from '../../assets/imageBank.js'
 import ActivityDetail from '../ActivityDetail/ActivityDetail.js'
+import { CgScrollV } from "react-icons/cg";
+
+
 
 const CountryDetail = () => {
   const dispatch = useDispatch()
@@ -37,7 +40,13 @@ const CountryDetail = () => {
       </div>
       <div className='country-image' style={{ backgroundImage: `url(${img})` }} ></div>
       <h1 className='titleActivities'> Actividades </h1>
+
+      {activities &&
+        <div className='scrollTouch'>
+          <CgScrollV />
+        </div>}
       <div className='activities-container'>
+
         {activities && activities.map((a, index) =>
           <ActivityDetail
             img={a.image.length > 0 ? a.image : imageDefault}

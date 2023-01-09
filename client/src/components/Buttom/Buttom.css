@@ -43,7 +43,7 @@
   transition: 0.5s all ease;
 }
 
-.buttom-countryDetails{
+.buttom-countryDetails {
   left: 20px;
   bottom: 14px;
 
@@ -180,6 +180,10 @@ span {
 
   .buttom-landinPage {
     visibility: hidden;
+  }
+
+  .buttom-countryDetails {
+    margin: 0 90px;
   }
 
 }
