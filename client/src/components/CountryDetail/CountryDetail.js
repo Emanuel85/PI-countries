@@ -41,8 +41,7 @@ const CountryDetail = () => {
       <div className='country-image' style={{ backgroundImage: `url(${img})` }} ></div>
       <h1 className='titleActivities'> Actividades </h1>
 
-      {activities &&
-        <div className='scrollTouch'>
+      {activities && <div className='scrollTouch'>
           <CgScrollV />
         </div>}
       <div className='activities-container'>
