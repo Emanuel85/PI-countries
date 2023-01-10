@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -L",
-    "node":"node index.js",
+    "node": "node index.js",
     "test": "mocha -w ./tests/**/*.spec.js",
     "dev": "nodemon src/db.js "
   },
