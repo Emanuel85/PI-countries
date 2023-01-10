@@ -16,7 +16,7 @@ export const AXIOS_ACTIVITIES = 'AXIOS_ACTIVITIES'
 
 export const getAxiosCountries = () => {
   return async function (dispatch) {
-    const resultCountries = await axios.get('http://localhost:3001/countries')//registros cargados en resultTest
+    const resultCountries = await axios.get('https://pi-countries-5j09.onrender.com/countries')//registros cargados en resultTest
     return dispatch({
       type: AXIOS_COUNTRIES,
       payload: resultCountries.data
@@ -48,7 +48,7 @@ export const getPagination = (payload) => {
 export const getActivities = () => {
   return async function (dispatch) {
     try {
-      const resultActivity = await axios.get(`http://localhost:3001/activities`)
+      const resultActivity = await axios.get(`https://pi-countries-5j09.onrender.com/activities`)
       return dispatch({
         type: AXIOS_ACTIVITIES,
         payload: resultActivity.data
@@ -62,7 +62,7 @@ export const getActivities = () => {
 
 export const getCountryDetail = (payload) => {
   return async function (dispatch) {
-    const resultCountry = await axios.get(`http://localhost:3001/countries/${payload}`)
+    const resultCountry = await axios.get(`https://pi-countries-5j09.onrender.com/countries/${payload}`)
     return dispatch({
       type: COUNTRY_DETAIL,
       payload: resultCountry.data
@@ -73,7 +73,7 @@ export const getCountryDetail = (payload) => {
 export const postActivity = (payload) => {
   return async function (dispatch) {
     try {
-      const resultActivity = await axios.post(`http://localhost:3001/activities`, payload)
+      const resultActivity = await axios.post(`https://pi-countries-5j09.onrender.com/activities`, payload)
       return dispatch({
         type: POST_ACTIVITY,
         payload: resultActivity
@@ -88,7 +88,7 @@ export const postActivity = (payload) => {
 export const searchCountryByName = (payload) => {
   return async function (dispatch) {
     try {
-      const resultSearch = await axios.get(`http://localhost:3001/countries?name=${payload}`)
+      const resultSearch = await axios.get(`https://pi-countries-5j09.onrender.com/countries?name=${payload}`)
       return dispatch({
         type: SEARCH_COUNTRY,
         payload: resultSearch.data
