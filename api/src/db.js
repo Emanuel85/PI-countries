@@ -16,7 +16,6 @@ const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}
 });
 
 //Verifica conexion a la bd
-
 sequelize.authenticate()
   .then(() => {
     console.log(`conexion exitosa del puerto ${DB_HOST}`)
