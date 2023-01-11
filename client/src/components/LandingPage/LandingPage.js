@@ -15,6 +15,12 @@ const LandingPage = () => {
         linkTo='/home'
       />
 
+      <Buttom
+        nameClass='button-aboutMe'
+        description='About..'
+        linkTo='/aboutMe'
+      />
+
     </div>
   )
 }

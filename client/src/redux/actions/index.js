@@ -12,6 +12,7 @@ export const ORDER_POPULATION_UP = 'ORDER_POPULATION_UP'
 export const ORDER_POPULATION_DOWN = 'ORDER_POPULATION_DOWN'
 export const FILTER_BY_ACTIVITIES = 'FILTER_BY_ACTIVITIES'
 export const AXIOS_ACTIVITIES = 'AXIOS_ACTIVITIES'
+export const MODAL_CONFIRMED = 'MODAL_CONFIRMED'
 
 
 export const getAxiosCountries = () => {
@@ -24,19 +25,6 @@ export const getAxiosCountries = () => {
   }
 }
 
-// export function getActivities() {
-//   return async function (dispatch) {
-//     try {
-//       const resultActivities = await axios.get(`http://localhost:3001/activities`)
-//       return dispatch({
-//         type: FETCH_ACTIVITIES,
-//         payload: resultActivities.data
-//       });
-//     } catch (error) {
-//       console.log(error)
-//     };
-//   }
-// }
 
 export const getPagination = (payload) => {
   return {
@@ -131,9 +119,14 @@ export const filterByContinent = (payload) => {
 }
 
 export function filterByActivities(payload) {
-  //console.log('Soy el PAYLOAD DE ACTIVITIDAD',payload)
   return {
     type: FILTER_BY_ACTIVITIES,
     payload: payload
+  }
+}
+
+export function modalConfirmed() {
+  return {
+    type: MODAL_CONFIRMED,    
   }
 }

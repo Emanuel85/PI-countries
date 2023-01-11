@@ -20,6 +20,72 @@
   transition: 0.5s all ease;
 }
 
+.button-homeAboutMe{
+  width: 140px;
+  height: 50px;
+
+  position: absolute;
+  bottom: 100px;
+  left: 500px;
+
+  display: flex;
+  justify-content: center;
+
+  border-radius: 5px;
+  border-style: none;
+  z-index: 3000;
+
+  /* background: rgb(0, 70, 127); */
+  user-select: none;
+  background: linear-gradient(0deg, rgba(0, 70, 127, 1) 0%, rgba(165, 204, 130, 1) 100%);
+
+  opacity: 0.3;
+  transition: 0.5s all ease;
+}
+
+.button-proyecto {
+  width: 140px;
+  height: 50px;
+
+  position: absolute;
+  bottom: 100px;
+  right: 500px;
+
+  display: flex;
+  justify-content: center;
+
+  border-radius: 5px;
+  border-style: none;
+  z-index: 3000;
+
+  /* background: rgb(0, 70, 127); */
+  user-select: none;
+  background: linear-gradient(0deg, rgba(0, 70, 127, 1) 0%, rgba(165, 204, 130, 1) 100%);
+
+  opacity: 0.3;
+  transition: 0.5s all ease;
+}
+
+.button-aboutMe{
+  width: 140px;
+  height: 50px;
+  position: relative;
+  bottom: -24px;
+  right: -2px;
+  display: flex;
+  z-index: 3000;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.button-aboutMe > span{
+  margin: 16px auto;
+  margin-left: 27px;
+  font-size: 25px;
+  font-weight: 400;
+  color: white;
+} 
+
 
 .buttom-landinPage {
   left: 20px;
@@ -89,7 +155,7 @@
 }
 
 
-.buttom-addActivity {
+.buttom-activityHome {
   width: 140px;
   height: 50px;
   position: relative;
@@ -124,7 +190,9 @@
 .buttom-landinPage:hover,
 .button-addActivitie:hover,
 .buttom-addActivity:hover,
-.buttom-countryDetails:hover {
+.buttom-countryDetails:hover,
+.button-homeAboutMe:hover,
+.button-proyecto:hover {
   opacity: 1;
   transition: 0.5s all ease;
 }
@@ -176,6 +244,59 @@ span {
     font-weight: 400;
     color: white;
     transform: rotate(270deg);
+  }
+
+  .buttom-activityHome {
+    width: 140px;
+    height: 50px;
+    position: absolute;
+    top: 730px;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    border-style: none;
+    z-index: 3000;
+    -webkit-user-select: none;
+    user-select: none;
+    background: linear-gradient(0deg, rgba(0, 70, 127, 1) 0%, rgba(165, 204, 130, 1) 100%);
+    opacity: 0.3;
+    transition: 0.5s all ease;
+  }
+
+  .button-proyecto {
+    width: 140px;
+    height: 50px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    border-style: none;
+    z-index: 3000;
+    -webkit-user-select: none;
+    user-select: none;
+    background: linear-gradient(0deg, rgba(0, 70, 127, 1) 0%, rgba(165, 204, 130, 1) 100%);
+    opacity: 0.3;
+    transition: 0.5s all ease;
+  }
+
+  .button-homeAboutMe{
+    width: 140px;
+    height: 50px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    border-style: none;
+    z-index: 3000;
+    -webkit-user-select: none;
+    user-select: none;
+    background: linear-gradient(0deg, rgba(0, 70, 127, 1) 0%, rgba(165, 204, 130, 1) 100%);
+    opacity: 0.3;
+    transition: 0.5s all ease;
   }
 
   .buttom-landinPage {

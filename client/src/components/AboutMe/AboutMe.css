@@ -1,0 +1,94 @@
+.text-container {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('../../assets/backgroundHome2.jpg');
+}
+
+.text-detail {
+    text-align: justify;
+    position: absolute;
+    margin: 100px 250px;
+    display: flex;
+    width: 70%;
+    color: white;
+    font-weight: 300;
+    line-height: 50px;
+    font-size: 22px;
+}
+
+.contact-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-left: -225px;
+}
+
+.contact-container>svg {
+    width: 40px;
+    margin-top: 400px;
+    margin-left: 260px;
+    height: 40px;
+    color: white;
+
+}
+
+.email {
+    font-size: 14px;
+    width: 40px;
+    margin-top: 416px;
+    margin-left: 7px;
+    height: 40px;
+    color: white;
+
+}
+
+
+@media screen and (max-width:800px) {
+    .text-detail {
+        text-align: justify;
+        position: absolute;
+        margin: 36px 20px;
+        display: flex;
+        width: 90%;
+        color: white;
+        font-weight: 300;
+        line-height: 20px;
+        font-size: 14px;
+    }
+
+
+    .contact-container {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-left: -226px;
+    }
+
+
+    .contact-container>svg {
+        width: 40px;
+        margin-top: 460px;
+        margin-left: 260px;
+        height: 40px;
+        color: white;
+    
+    }
+
+
+    .email {
+        font-size: 14px;
+        width: 40px;
+        margin-top: 473px;
+        margin-left: 7px;
+        height: 40px;
+        color: white;    
+    }
+    
+}

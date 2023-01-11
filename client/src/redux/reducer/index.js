@@ -10,14 +10,15 @@ import {
   ORDER_POPULATION_DOWN,
   ORDER_POPULATION_UP,
   FILTER_BY_ACTIVITIES,
-  AXIOS_ACTIVITIES
+  AXIOS_ACTIVITIES,
+  MODAL_CONFIRMED
 } from "../actions";
 
 
 export const postPerPage = 10
 const initialState = {
   countries: [],//249
-  countriesList:[],
+  countriesList: [],
   country: [],
   searchCountry: [],
   ordenAlphabetic: [],
@@ -27,6 +28,7 @@ const initialState = {
   lastPostIndex: 9,
   currentPage: 1, //Pagina Actual
   pages: 0,//Total de paginas 25
+  confirmed: false
 }
 
 export function reducer(state = initialState, action) {
@@ -35,7 +37,7 @@ export function reducer(state = initialState, action) {
       return {
         ...state,
         countries: action.payload,
-        countriesList:action.payload,
+        countriesList: action.payload,
         filteredContinent: action.payload,
         pages: Math.ceil(action.payload.length / postPerPage)
       }
@@ -64,8 +66,15 @@ export function reducer(state = initialState, action) {
 
     case POST_ACTIVITY:
       return {
-        ...state
+        ...state,
+        confirmed: true
       };
+
+    case MODAL_CONFIRMED:
+      return {
+        ...state,
+        confirmed:false
+      }
 
     case GET_PAGINATION: {
       return {
@@ -126,15 +135,15 @@ export function reducer(state = initialState, action) {
         ...state,
         countries: continentFounded
       }
-      
+
     case FILTER_BY_ACTIVITIES:
       const allCountries = state.countriesList
-      const filterActivity= action.payload === 'default' ? allCountries : allCountries.filter(c => c.activities && c.activities.some(a=> a.name === action.payload))
-      return{
+      const filterActivity = action.payload === 'default' ? allCountries : allCountries.filter(c => c.activities && c.activities.some(a => a.name === action.payload))
+      return {
         ...state,
-        countries:filterActivity,
-        pages: Math.ceil(filterActivity.length/postPerPage),
-      }    
+        countries: filterActivity,
+        pages: Math.ceil(filterActivity.length / postPerPage),
+      }
     default:
       return state
   }

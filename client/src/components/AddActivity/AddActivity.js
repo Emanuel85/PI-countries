@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { postActivity } from '../../redux/actions/index';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import * as actions from '../../redux/actions/index'
-import validate from './validators';
+import * as actions from '../../redux/actions/index';
 import { FaFileImage } from "react-icons/fa";
 import './AddActivity.css';
 import Buttom from '../Buttom/Buttom';
 import Modal from '../Modal/Modal';
-import { useNavigate } from 'react-router-dom';
 
 
 const AddActivity = () => {
   const dispatch = useDispatch();
   const countries = useSelector(state => state.countries);
+  const confirmed = useSelector(state => state.confirmed);
 
   let orderCountries = countries.sort(function (a, b) {
     return ('' + a.name).localeCompare(b.name);
@@ -28,12 +26,9 @@ const AddActivity = () => {
     dispatch(actions.getAxiosCountries())
   }, [])
 
-  //let orderCountries = countries.sort(function (a, b) {('' + a.name).localeCompare(b.name)}).map(country => {return ({ name: country.name  })});
-  //HASTA ACA CTRL Z
   const [selected, setSelected] = useState("");
   const [imgFetch, setimgFetch] = useState(false);
   const [previewImage, setpreviewImage] = useState('');
-  const [modal, setModal] = useState()
   const [errors, setErrors] = useState({});
   const [modified, setModified] = useState(false)
   const [activity, setActivity] = useState({
@@ -45,8 +40,8 @@ const AddActivity = () => {
     countries: []
   });
 
-  const navigate = useNavigate()
-
+  const refCountry = useRef()
+  const refSeason = useRef()
 
   const validate = (activity) => {
     let errors = {}
@@ -55,11 +50,11 @@ const AddActivity = () => {
       errors.name = 'Name is required'
     }
     else if (!activity.difficulty) {
-      errors.difficulty = 'Difficulty is required'
+      errors.difficulty = 'Difficulty is required and number'
     }
 
     else if (!activity.duration) {
-      errors.duration = 'Duration is required'
+      errors.duration = 'Duration is required and number'
     }
 
     else if (activity.duration > 24 || activity.duration < 1) {
@@ -79,7 +74,6 @@ const AddActivity = () => {
     }
     return errors;
   };
-
 
 
   const handleChange = (e) => {
@@ -111,13 +105,7 @@ const AddActivity = () => {
 
   }
 
-  // const handleFilter = (e) =>{
-  // countriesList.filter(country=> country.name !== e.target.value)
-  // console.log('filtrado',countriesList)
-  // return countriesList
-  // }
-
-
+  
   const handleCountries = (e) => {
     setModified(true)
     if (e.target.value !== 'Select' && !activity.countries.includes(e.target.value)) {
@@ -130,9 +118,8 @@ const AddActivity = () => {
       ...activity,
       countries: [...activity.countries, e.target.value]
     }))
-
-
   }
+
 
   const deleteCountry = (e) => {
     setModified(true)
@@ -146,6 +133,7 @@ const AddActivity = () => {
     }))
   }
 
+
   // const handleCheckErrors = (e) => {
   //   e.preventDefault();
   //   setErrors(validate({
@@ -156,10 +144,6 @@ const AddActivity = () => {
   //   handleSubmit(e)
   // }
 
-//  const handleNavigate = () =>
-//   {setTimeout(() => {
-//   navigate("/create");
-// }, 2000);}
 
   const handleImage = (file) => {
     setimgFetch(true)
@@ -183,9 +167,10 @@ const AddActivity = () => {
     }
   }
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postActivity(activity));
+    dispatch(actions.postActivity(activity));
     setpreviewImage('')
     setActivity({
       name: '',
@@ -194,32 +179,17 @@ const AddActivity = () => {
       season: '',
       image: '',
       countries: []
-    });        
-  }
+    });
+    refCountry.current.selectedIndex = 0
+    refSeason.current.selectedIndex = 0
 
+  }
 
   return (
     <div className='activity-page-container'>
       <div className='activity-page'>
 
         <div className='formContent'>
-
-          {/* {modal === true ?
-            <Modal
-              modalType='exitoso'
-              titleAlert='Success'
-              textAlert='The activity was created successfully'
-              linkTo='/create'
-              nameButton='ACEPT'
-            /> : modal === false ?
-              <Modal
-                modalType='fallida'
-                titleAlert='Alert'
-                textAlert='Complete the required fields'
-                linkTo='/create'
-                nameButton='TRY AGAIN'
-              /> : ''}  */}
-
 
           <form className='form' onSubmit={e => handleSubmit(e)}>
             <h1 className='title-activity'>Would you like add an activity?</h1>
@@ -241,7 +211,7 @@ const AddActivity = () => {
             <div className='divForm'>
               <div className='divLabel'>
                 <input
-                  type='text'
+                  type='number'
                   name='difficulty'
                   value={activity.difficulty}
                   onChange={e => handleChange(e)}
@@ -255,7 +225,7 @@ const AddActivity = () => {
             <div className='divForm'>
               <div className='divLabel'>
                 <input
-                  type='text'
+                  type='number'
                   name='duration'
                   value={activity.duration}
                   onChange={e => handleChange(e)}
@@ -268,7 +238,7 @@ const AddActivity = () => {
 
             <div className='divForm'>
               <div className='divLabel'>
-                <select onChange={e => handleSeasons(e)}>
+                <select onChange={e => handleSeasons(e)} ref={refSeason}>
                   <option>Select Season</option>
                   <option value='Spring'>Spring</option>
                   <option value='Summer'>Summer</option>
@@ -282,7 +252,7 @@ const AddActivity = () => {
             <div>
               <div className='divForm'>
                 <div className='divLabel'>
-                  <select value={selected} onChange={e => [handleCountries(e), setSelected(e)]}>
+                  <select value={selected} onChange={e => [handleCountries(e), setSelected(e)]} ref={refCountry}>
                     <option>Select Countries</option>
                     {countriesList?.map(country => {
                       return (
@@ -310,8 +280,10 @@ const AddActivity = () => {
 
             </div>
 
-            <div>
-              <button type='submit' disabled={Object.keys(errors).length !== 0 || !modified} >Add Activity</button>
+            <div>{
+              Object.keys(errors).length !== 0 || !modified || imgFetch ?
+                <button type='submit' disabled >Add Activity</button> :
+                <button type='submit'>Add Activity</button>}
             </div>
 
             <div className="image-container">
@@ -334,10 +306,19 @@ const AddActivity = () => {
           </form>
 
           <Buttom
-            nameClass='buttom-addActivity'
+            nameClass='buttom-activityHome'
             description='HOME'
             linkTo='/home'
           />
+
+          {confirmed === true ?
+            <Modal
+              modalType='exitoso'
+              titleAlert='Success'
+              textAlert='The activity was created successfully'
+              linkTo='/create'
+              nameButton='ACEPT'
+            /> : undefined}
 
         </div>
 

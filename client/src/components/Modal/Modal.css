@@ -159,3 +159,31 @@
     border-radius: 5px;
     transition: .4s all ease;
 }
+
+@media screen and (max-width:800px) {
+
+    .modal-container {
+        margin-top: 30px;
+        position: relative;
+        background-color: #f8f8f8;
+        z-index: 999;
+        width: 330px;
+        height: 350px;
+        border-radius: 20px;
+    }
+
+    .modalBackground-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 100vw;
+        height: 790px;
+        background-color: #000000bf;
+        -webkit-backdrop-filter: blur(2px);
+        backdrop-filter: blur(2px);
+        z-index: 9;
+        top: 0px;
+    }
+
+}
