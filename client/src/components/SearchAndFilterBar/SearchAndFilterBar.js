@@ -20,7 +20,6 @@ const SearchAndFilterBar = () => {
     e.preventDefault()
     setVisible(!visible)
   }
-  console.log('soy el estado para el menu', visible)
   useEffect(() => {
     dispatch(actions.filterByActivities(activities));
   }, [dispatch, activities])

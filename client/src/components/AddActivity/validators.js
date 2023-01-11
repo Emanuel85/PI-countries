@@ -15,7 +15,6 @@ const validate = (activity) => {
     if(!activity.countries.length){
         errors.countries = 'Select a country*'
     };
-
     return errors;
 };
 

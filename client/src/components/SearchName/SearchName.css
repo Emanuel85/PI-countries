@@ -48,6 +48,15 @@
   position: absolute;
 }
 
+.custom-file-upload > h3{
+  font-size: 15px;
+  position: absolute;
+  top: 254px;
+  font-weight: 400;
+}
+
+
+
 @media screen and (max-width:800px) {
 
   .resultHome-container {

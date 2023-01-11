@@ -1,31 +1,41 @@
-import React, { useState } from 'react';
-import { postActivity, getActivities } from '../../redux/actions/index';
+import React, { useEffect, useState } from 'react';
+import { postActivity } from '../../redux/actions/index';
 import { useDispatch, useSelector } from 'react-redux';
+import * as actions from '../../redux/actions/index'
 import validate from './validators';
-import { useNavigate } from 'react-router-dom';
 import { FaFileImage } from "react-icons/fa";
 import './AddActivity.css';
 import Buttom from '../Buttom/Buttom';
+import Modal from '../Modal/Modal';
+import { useNavigate } from 'react-router-dom';
 
 
 const AddActivity = () => {
   const dispatch = useDispatch();
-  const arrayCountries = useSelector(state => state.countries);
-  const navigate = useNavigate();
+  const countries = useSelector(state => state.countries);
 
-  let countriesList = arrayCountries.map(country => {
+  let orderCountries = countries.sort(function (a, b) {
+    return ('' + a.name).localeCompare(b.name);
+  })
+
+  let countriesList = orderCountries.map(country => {
     return ({
-      name: country.name,
-      img: country.img
+      name: country.name
     })
   });
 
+  useEffect(() => {
+    dispatch(actions.getAxiosCountries())
+  }, [])
 
+  //let orderCountries = countries.sort(function (a, b) {('' + a.name).localeCompare(b.name)}).map(country => {return ({ name: country.name  })});
+  //HASTA ACA CTRL Z
   const [selected, setSelected] = useState("");
   const [imgFetch, setimgFetch] = useState(false);
   const [previewImage, setpreviewImage] = useState('');
-
-  const [errors, setErrors] = useState({ firstTry: true });
+  const [modal, setModal] = useState()
+  const [errors, setErrors] = useState({});
+  const [modified, setModified] = useState(false)
   const [activity, setActivity] = useState({
     name: '',
     difficulty: '',
@@ -35,95 +45,121 @@ const AddActivity = () => {
     countries: []
   });
 
+  const navigate = useNavigate()
+
+
+  const validate = (activity) => {
+    let errors = {}
+
+    if (!activity.name) {
+      errors.name = 'Name is required'
+    }
+    else if (!activity.difficulty) {
+      errors.difficulty = 'Difficulty is required'
+    }
+
+    else if (!activity.duration) {
+      errors.duration = 'Duration is required'
+    }
+
+    else if (activity.duration > 24 || activity.duration < 1) {
+      errors.duration = 'Maximum duration from 1 to 24 hours'
+    }
+
+    else if (activity.difficulty > 5 || activity.difficulty < 1) {
+      errors.difficulty = 'Maximum difficulty from 1 to 5'
+    }
+
+    else if (!activity.season) {
+      errors.season = 'You must select at least one season'
+    }
+
+    else if (!activity.countries.length) {
+      errors.countries = 'You must select at least one country'
+    }
+    return errors;
+  };
+
+
 
   const handleChange = (e) => {
+    setModified(true);
     setActivity({
       ...activity,
       [e.target.name]: e.target.value
     });
-    if (!errors.firstTry) {
-      setErrors(validate({
-        ...activity,
-        [e.target.name]: e.target.value
-      }))
-    }
+    setErrors(validate({
+      ...activity,
+      [e.target.name]: e.target.value
+    }))
   }
 
+
   const handleSeasons = (e) => {
+    setModified(true)
     if (e.target.value !== 'Select' && !activity.season.includes(e.target.value)) {
       setActivity({
         ...activity,
         season: e.target.value
       })
-      if (!errors.firstTry) {
-        setErrors(validate({
-          ...activity,
-          season: e.target.value
-        }))
-      }
     }
+
+    setErrors(validate({
+      ...activity,
+      season: e.target.value
+    }))
+
   }
 
+  // const handleFilter = (e) =>{
+  // countriesList.filter(country=> country.name !== e.target.value)
+  // console.log('filtrado',countriesList)
+  // return countriesList
+  // }
+
+
   const handleCountries = (e) => {
+    setModified(true)
     if (e.target.value !== 'Select' && !activity.countries.includes(e.target.value)) {
       setActivity({
         ...activity,
         countries: [...activity.countries, e.target.value]
       })
-      if (!errors.firstTry) {
-        setErrors(validate({
-          ...activity,
-          countries: [...activity.countries, e.target.value]
-        }))
-      }
     }
+    setErrors(validate({
+      ...activity,
+      countries: [...activity.countries, e.target.value]
+    }))
+
+
   }
 
   const deleteCountry = (e) => {
+    setModified(true)
     setActivity({
       ...activity,
       countries: activity.countries.filter(country => country !== e.target.value)
     })
-    if (!errors.firstTry) {
-      setErrors(validate({
-        ...activity,
-        countries: activity.countries.filter(country => country !== e.target.value)
-      }))
-    }
-  }
-
-  const handleCheckErrors = (e) => {
-    e.preventDefault();
     setErrors(validate({
       ...activity,
-      [e.target.name]: e.target.value,
-      countries: [...activity.countries, e.target.value]
+      countries: activity.countries.filter(country => country !== e.target.value)
     }))
-    handleSubmit(e)
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (activity.name && activity.difficulty && activity.duration && activity.season && activity.countries.length >= 1) {
-      dispatch(postActivity(activity));
-      alert('The activity has been created successfully');
-      setActivity({
-        name: '',
-        difficulty: '',
-        duration: '',
-        season: '',
-        image: '',
-        countries: []
-      });
-      errors.firstTry = false
-      navigate('/home')
-    }
-    if (errors.firstTry) {
-      alert('Complete the required fields')
-    }
-  }
+  // const handleCheckErrors = (e) => {
+  //   e.preventDefault();
+  //   setErrors(validate({
+  //     ...activity,
+  //     [e.target.name]: e.target.value,
+  //     countries: [...activity.countries, e.target.value]
+  //   }))
+  //   handleSubmit(e)
+  // }
 
-
+//  const handleNavigate = () =>
+//   {setTimeout(() => {
+//   navigate("/create");
+// }, 2000);}
 
   const handleImage = (file) => {
     setimgFetch(true)
@@ -147,7 +183,19 @@ const AddActivity = () => {
     }
   }
 
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(postActivity(activity));
+    setpreviewImage('')
+    setActivity({
+      name: '',
+      difficulty: '',
+      duration: '',
+      season: '',
+      image: '',
+      countries: []
+    });        
+  }
 
 
   return (
@@ -155,6 +203,23 @@ const AddActivity = () => {
       <div className='activity-page'>
 
         <div className='formContent'>
+
+          {/* {modal === true ?
+            <Modal
+              modalType='exitoso'
+              titleAlert='Success'
+              textAlert='The activity was created successfully'
+              linkTo='/create'
+              nameButton='ACEPT'
+            /> : modal === false ?
+              <Modal
+                modalType='fallida'
+                titleAlert='Alert'
+                textAlert='Complete the required fields'
+                linkTo='/create'
+                nameButton='TRY AGAIN'
+              /> : ''}  */}
+
 
           <form className='form' onSubmit={e => handleSubmit(e)}>
             <h1 className='title-activity'>Would you like add an activity?</h1>
@@ -167,7 +232,7 @@ const AddActivity = () => {
                   value={activity.name}
                   onChange={e => handleChange(e)}
                   autoComplete='off'
-                  placeholder='Activity Name'
+                  placeholder='Activity Name...'
                 />
               </div>
               {errors.name && (<p className='errorMessage'>{errors.name}</p>)}
@@ -181,7 +246,7 @@ const AddActivity = () => {
                   value={activity.difficulty}
                   onChange={e => handleChange(e)}
                   autoComplete='off'
-                  placeholder='Difficulty min:1 to max:5'
+                  placeholder='Difficulty 1 to 5'
                 />
               </div>
               {errors.difficulty && (<p className='errorMessage'>{errors.difficulty}</p>)}
@@ -212,7 +277,6 @@ const AddActivity = () => {
                 </select>
               </div>
               {errors.season && (<p className='errorMessage'>{errors.season}</p>)}
-
             </div>
 
             <div>
@@ -247,20 +311,14 @@ const AddActivity = () => {
             </div>
 
             <div>
-              {errors.name ||
-                errors.activity ||
-                errors.duration ||
-                errors.season ||
-                errors.countries ||
-                imgFetch ?
-                <button disabled className='btnAddActivity' >Add Activity</button>
-                : <button className='btnAddActivity' onClick={e => handleCheckErrors(e)}>Add Activity</button>}
+              <button type='submit' disabled={Object.keys(errors).length !== 0 || !modified} >Add Activity</button>
             </div>
 
             <div className="image-container">
               <div className="input-image">
-                <label className={previewImage.length > 0 ? 'noCustom-file-upload' : 'custom-file-upload'}
-                >
+
+                <label className={previewImage.length > 0 ? 'noCustom-file-upload' : 'custom-file-upload'}>
+                  <h3>Cargar Imagen...</h3>
                   <input
                     type="file"
                     accept="image/*"
@@ -289,3 +347,5 @@ const AddActivity = () => {
 }
 
 export default AddActivity
+
+//btnAddActivity
